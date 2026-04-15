@@ -1,12 +1,18 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/toolbox/',
-  plugins: [vue()],
-  // 生产优化
-  build: {
+export default defineConfig(({ command, mode }) => {
+  // 根据环境变量决定 base 路径
+  // 本地开发 (dev) 不使用 base，生产构建使用 /toolbox/
+  const isDev = command === 'serve'
+  const base = isDev ? './' : '/toolbox/'
+  
+  return {
+    base,
+    plugins: [vue()],
+    // 生产优化
+    build: {
     // 关闭构建时生成 sourcemap（减小体积）
     sourcemap: false,
     // 开启 rollup 分块策略
@@ -44,4 +50,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', 'vue-router'],
   },
+  }
 })

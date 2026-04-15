@@ -76,7 +76,7 @@ function hello(name) {
 
 ## 链接
 
-[访问工具箱](https://superiorhui.github.io)
+[访问工具箱](https://aijiuming.com)
 `
 
 // 简单的 Markdown 解析（演示用，不依赖第三方库）

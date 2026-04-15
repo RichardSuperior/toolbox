@@ -14,8 +14,12 @@
           <router-link to="/about" class="hover:text-primary-500 transition-colors">关于</router-link>
           <span>共 {{ toolCount }} 个工具</span>
         </div>
+        <div class="flex items-center gap-4 text-xs">
+          <span class="text-[var(--text-secondary)]">友链:</span>
+          <a href="https://aijiuming.com" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:underline">AI技术博客</a>
+        </div>
         <div class="text-xs text-[var(--text-secondary)]">
-          始于 2026 · By <a href="https://superiorhui.github.io" target="_blank" class="text-primary-500 hover:underline">SuperiorHui</a>
+          始于 2026 · By <a href="https://aijiuming.com" target="_blank" class="text-primary-500 hover:underline">SuperiorHui</a>
         </div>
       </div>
     </div>

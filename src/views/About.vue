@@ -7,6 +7,72 @@
       <p class="text-[var(--text-secondary)] text-lg max-w-xl mx-auto">一个简单、快速、实用的在线工具集合</p>
     </div>
 
+    <!-- 个人介绍 -->
+    <div class="card p-6 mb-6">
+      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+        <span class="text-xl">👨‍💻</span> 关于作者
+      </h2>
+      <div class="space-y-4">
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="w-24 h-24 bg-gradient-to-br from-primary-500 to-accent rounded-2xl flex items-center justify-center text-5xl shrink-0 mx-auto md:mx-0">钟</div>
+          <div class="flex-1 text-center md:text-left">
+            <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">钟老师</h3>
+            <p class="text-primary-500 font-medium mb-3">AI大模型应用开发教学导师 · 全栈技术开发者</p>
+            <p class="text-sm text-[var(--text-secondary)] leading-relaxed">
+              深耕 AI大模型应用开发 + 全栈技术多年，现居深圳龙岗。专注于「技术落地与体系化教学」双赛道，
+              既主导企业级AI与微服务项目从0到1落地，也坚持以「实战驱动」理念培养技术人才，让学员真正掌握能直接应用于工作的核心技能。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 教学理念 -->
+    <div class="card p-6 mb-6">
+      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+        <span class="text-xl">🎯</span> 教学理念：拒绝空谈，实战为王
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div v-for="item in teachingPhilosophy" :key="item.title" class="bg-[var(--bg-secondary)] rounded-xl p-4">
+          <div class="font-semibold text-[var(--text-primary)] mb-1">{{ item.title }}</div>
+          <div class="text-sm text-[var(--text-secondary)]">{{ item.desc }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心技术栈 -->
+    <div class="card p-6 mb-6">
+      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+        <span class="text-xl">🛠️</span> 核心技术栈
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <div class="text-sm font-medium text-[var(--text-primary)] mb-2 flex items-center gap-2">
+            <span>🤖</span> AI与智能应用
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span v-for="tech in aiTechs" :key="tech" class="px-3 py-1 bg-primary-500/10 text-primary-500 rounded-full text-sm">{{ tech }}</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm font-medium text-[var(--text-primary)] mb-2 flex items-center gap-2">
+            <span>💻</span> 全栈开发
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span v-for="tech in fullstackTechs" :key="tech" class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">{{ tech }}</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm font-medium text-[var(--text-primary)] mb-2 flex items-center gap-2">
+            <span>☁️</span> 云原生
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span v-for="tech in cloudTechs" :key="tech" class="px-3 py-1 bg-purple-500/10 text-purple-500 rounded-full text-sm">{{ tech }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="grid md:grid-cols-2 gap-6 mb-8">
       <!-- 网站介绍 -->
       <div class="card p-6">
@@ -36,20 +102,6 @@
       </div>
     </div>
 
-    <!-- 技术栈 -->
-    <div class="card p-6 mb-6">
-      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-        <span class="text-xl">⚡</span> 技术栈
-      </h2>
-      <div class="flex flex-wrap gap-3">
-        <span v-for="tech in techs" :key="tech.name" class="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] rounded-xl text-sm">
-          <span>{{ tech.icon }}</span>
-          <span class="font-medium text-[var(--text-primary)]">{{ tech.name }}</span>
-          <span class="text-[var(--text-secondary)]">{{ tech.desc }}</span>
-        </span>
-      </div>
-    </div>
-
     <!-- 工具统计 -->
     <div class="card p-6 mb-6">
       <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
@@ -64,11 +116,45 @@
       </div>
     </div>
 
+    <!-- 联系方式 -->
+    <div class="card p-6 mb-6">
+      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+        <span class="text-xl">📬</span> 联系方式
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a v-for="contact in contacts" :key="contact.name" :href="contact.url" target="_blank" rel="noopener noreferrer" 
+           class="flex items-center gap-3 p-4 bg-[var(--bg-secondary)] rounded-xl hover:bg-primary-500/10 transition-colors group">
+          <span class="text-2xl">{{ contact.icon }}</span>
+          <div>
+            <div class="font-medium text-[var(--text-primary)] group-hover:text-primary-500">{{ contact.name }}</div>
+            <div class="text-xs text-[var(--text-secondary)]">{{ contact.desc }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 友情链接 -->
+    <div class="card p-6 mb-6">
+      <h2 class="font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+        <span class="text-xl">🔗</span> 友情链接
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <a v-for="link in friendlyLinks" :key="link.url" :href="link.url" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-2 px-4 py-2 bg-[var(--bg-secondary)] rounded-xl hover:bg-primary-500/10 transition-colors group">
+          <span>{{ link.icon }}</span>
+          <span class="text-sm text-[var(--text-primary)] group-hover:text-primary-500">{{ link.name }}</span>
+        </a>
+      </div>
+    </div>
+
     <!-- 底部链接 -->
     <div class="text-center">
       <p class="text-sm text-[var(--text-secondary)] mb-4">始于 2026 · By SuperiorHui</p>
       <div class="flex justify-center gap-4 flex-wrap">
-        <a href="https://superiorhui.github.io" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        <a href="https://aijiuming.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          🌐 技术博客
+        </a>
+        <a href="https://aijiuming.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
           🌐 主页
         </a>
         <a href="https://github.com/superiorhui" target="_blank" rel="noopener noreferrer" class="btn-secondary">
@@ -93,11 +179,26 @@ const declarations = [
   '无侵入式广告，保持简洁的使用体验',
 ]
 
-const techs = [
-  { icon: '💚', name: 'Vue 3', desc: '前端框架' },
-  { icon: '⚡', name: 'Vite', desc: '构建工具' },
-  { icon: '🎨', name: 'Tailwind CSS', desc: 'UI样式' },
-  { icon: '🔀', name: 'Vue Router', desc: '路由管理' },
+const teachingPhilosophy = [
+  { title: '项目驱动学习', desc: '所有课程围绕企业真实需求设计' },
+  { title: '从0到1体系化', desc: '兼顾基础扎实与前沿技能' },
+  { title: '技术本质拆解', desc: '不仅会用，更懂原理' },
+  { title: '终身技术支持', desc: '课程结束后提供长期答疑' },
+]
+
+const aiTechs = ['LangChain', 'LangGraph', 'RAG检索增强', 'AI Agent', '向量数据库', '大模型微调']
+const fullstackTechs = ['Java', 'Spring Cloud', 'Python', 'Vue', 'React', '数据分析']
+const cloudTechs = ['Docker', 'Kubernetes']
+
+const contacts = [
+  { name: 'AI大模型技术主页', desc: 'me.aijiuming.com', url: 'https://me.aijiuming.com', icon: '🤖' },
+  { name: 'B站技术频道', desc: '钟老师 | AI全栈实战', url: 'https://space.bilibili.com/476271437', icon: '📺' },
+  { name: 'GitHub开源', desc: 'superiorHui', url: 'https://github.com/superiorHui', icon: '💻' },
+  { name: '技术博客', desc: 'aijiuming.com', url: 'https://aijiuming.com', icon: '📝' },
+]
+
+const friendlyLinks = [
+  { name: 'AI大模型技术博客', url: 'https://aijiuming.com', icon: '🔗' },
 ]
 
 // 统计各分类工具数量
