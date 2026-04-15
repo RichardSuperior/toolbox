@@ -1,14 +1,19 @@
 {
   "name": "toolbox",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "在线工具箱 - 140+免费实用工具集合",
+  "author": "SuperiorHui",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src --ext .vue,.js",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
+    "cnb-cli": "^1.0.3",
     "vue": "^3.5.32",
     "vue-router": "^4.6.4"
   },
@@ -18,5 +23,8 @@
     "postcss": "^8.5.9",
     "tailwindcss": "^3.4.19",
     "vite": "^8.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

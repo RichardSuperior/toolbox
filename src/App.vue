@@ -1,7 +1,7 @@
 <template>
-  <div :class="{ dark: isDark }" class="min-h-screen">
+  <div :class="{ dark: isDark }" class="min-h-screen" :lang="'zh-CN'">
     <NavBar :isDark="isDark" @toggle-dark="isDark = !isDark" />
-    <main class="min-h-[calc(100vh-64px-80px)]">
+    <main id="main-content" class="min-h-[calc(100vh-64px-80px)]" role="main" tabindex="-1">
       <router-view v-slot="{ Component }">
         <transition name="page" mode="out-in">
           <component :is="Component" />

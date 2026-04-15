@@ -37,7 +37,15 @@
             您当前的 IP 地址
           </div>
           <div class="text-2xl font-mono font-bold text-[var(--text-primary)]">
-            {{ ip || '获取中...' }}
+            <span v-if="ipLoading" class="inline-flex items-center gap-2">
+              <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span class="text-sm text-[var(--text-secondary)]">检测中...</span>
+            </span>
+            <span v-else-if="ip" class="text-primary-500">{{ ip }}</span>
+            <span v-else class="text-[var(--text-secondary)] text-sm">无法获取</span>
           </div>
         </div>
         <router-link to="/getIP" class="btn-primary">
@@ -117,6 +125,7 @@ const route = useRoute()
 const search = ref('')
 const activeCategory = ref('all')
 const ip = ref('')
+const ipLoading = ref(true)
 
 // 支持 ?cat=xxx URL 参数，从导航栏下拉点击跳转
 watch(() => route.query.cat, (cat) => {
@@ -167,12 +176,18 @@ const stats = [
 ]
 
 onMounted(async () => {
+  ipLoading.value = true
   try {
-    const res = await fetch('https://api.ipify.org?format=json')
+    const res = await fetch('https://api.ipify.org?format=json', {
+      // 超时设置
+      signal: AbortSignal.timeout(5000)
+    })
     const data = await res.json()
     ip.value = data.ip
   } catch {
-    ip.value = '获取失败'
+    ip.value = ''
+  } finally {
+    ipLoading.value = false
   }
 })
 </script>

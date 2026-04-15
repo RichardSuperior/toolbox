@@ -28,24 +28,54 @@ defineProps({
   tool: { type: Object, required: true }
 })
 
+// 分类名称映射（覆盖所有9个分类）
 const categoryNames = {
-  text: '字符工具',
+  json: 'JSON工具',
+  format: '格式化转换',
+  encrypt: '加解密',
+  text: '文本数字',
   network: '网络工具',
-  date: '日期工具',
-  image: '图形工具',
+  tools: '站长工具',
+  calc: '计算工具',
+  other: '其他工具',
+  reference: '对照列表',
+  android: '移动开发',
+  article: '文章工具',
+  world: '世界信息',
+  culture: '历史文化',
 }
 
+// 背景色映射
 const bgColors = {
-  text: 'bg-blue-50 dark:bg-blue-900/20',
-  network: 'bg-green-50 dark:bg-green-900/20',
-  date: 'bg-purple-50 dark:bg-purple-900/20',
-  image: 'bg-orange-50 dark:bg-orange-900/20',
+  json: 'bg-blue-50 dark:bg-blue-900/20',
+  format: 'bg-green-50 dark:bg-green-900/20',
+  encrypt: 'bg-purple-50 dark:bg-purple-900/20',
+  text: 'bg-cyan-50 dark:bg-cyan-900/20',
+  network: 'bg-emerald-50 dark:bg-emerald-900/20',
+  tools: 'bg-orange-50 dark:bg-orange-900/20',
+  calc: 'bg-pink-50 dark:bg-pink-900/20',
+  other: 'bg-slate-50 dark:bg-slate-800/50',
+  reference: 'bg-amber-50 dark:bg-amber-900/20',
+  android: 'bg-green-50 dark:bg-green-900/20',
+  article: 'bg-teal-50 dark:bg-teal-900/20',
+  world: 'bg-indigo-50 dark:bg-indigo-900/20',
+  culture: 'bg-red-50 dark:bg-red-900/20',
 }
 
+// 标签色映射
 const tagColors = {
-  text: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400',
-  network: 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400',
-  date: 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400',
-  image: 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400',
+  json: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400',
+  format: 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400',
+  encrypt: 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400',
+  text: 'bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400',
+  network: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400',
+  tools: 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400',
+  calc: 'bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400',
+  other: 'bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300',
+  reference: 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
+  android: 'bg-green-200 text-green-700 dark:bg-green-900/30 dark:text-green-300',
+  article: 'bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-400',
+  world: 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400',
+  culture: 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400',
 }
 </script>

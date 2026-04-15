@@ -2,13 +2,41 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- 性能优化：预连接关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- SEO 基本标签 -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="SuperiorHui" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="在线工具箱 - 简单、快速、实用的在线工具集合，包含Base64编解码、密码生成、图片处理、IP查询等多种实用工具" />
-    <meta name="keywords" content="在线工具,Base64,密码生成,图片压缩,IP查询,农历,日期计算" />
-    <title>在线工具箱</title>
+    <!-- SEO 核心标签 -->
+    <title>在线工具箱 - JSON格式化 Base64编码 图片处理 密码生成</title>
+    <meta name="description" content="免费在线工具箱，提供JSON格式化、Base64编码、图片处理、密码生成、IP查询、日期计算等140+实用工具。无需注册，完全免费，保护隐私。" />
+    <meta name="keywords" content="在线工具,JSON格式化,Base64,密码生成,图片压缩,IP查询,农历转换,日期计算,开发者工具" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <!-- Open Graph 社交分享 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="在线工具箱 - 140+免费实用工具集合" />
+    <meta property="og:description" content="简单、快速、实用 — 汇聚开发、设计、日常所需的各类在线工具，全部免费，无需注册。" />
+    <meta property="og:url" content="https://toolbox.example.com" />
+    <meta property="og:site_name" content="在线工具箱" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="在线工具箱 - 140+免费实用工具集合" />
+    <meta name="twitter:description" content="简单、快速、实用 — 汇聚开发、设计、日常所需的各类在线工具" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- DNS 预解析 -->
+    <link rel="dns-prefetch" href="https://api.ipify.org" />
+    <!-- CSP 安全策略 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.ipify.org https:; frame-src 'none';" />
   </head>
   <body>
+    <!-- 跳转到主内容（可访问性） -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-primary-600 focus:rounded-lg focus:shadow-lg">
+      跳转到主要内容
+    </a>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

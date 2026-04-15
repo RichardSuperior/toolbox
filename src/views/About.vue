@@ -67,11 +67,11 @@
     <!-- 底部链接 -->
     <div class="text-center">
       <p class="text-sm text-[var(--text-secondary)] mb-4">始于 2026 · By SuperiorHui</p>
-      <div class="flex justify-center gap-4">
-        <a href="https://superiorhui.github.io" target="_blank" class="btn-secondary">
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="https://superiorhui.github.io" target="_blank" rel="noopener noreferrer" class="btn-secondary">
           🌐 主页
         </a>
-        <a href="https://superiorhui.github.io" target="_blank" class="btn-secondary">
+        <a href="https://github.com/superiorhui" target="_blank" rel="noopener noreferrer" class="btn-secondary">
           💻 GitHub
         </a>
         <router-link to="/" class="btn-primary">
@@ -83,7 +83,8 @@
 </template>
 
 <script setup>
-import { tools } from '../data/tools.js'
+import { computed } from 'vue'
+import { tools, categories } from '../data/tools.js'
 
 const declarations = [
   '所有工具均免费使用，不收取任何费用',
@@ -99,10 +100,14 @@ const techs = [
   { icon: '🔀', name: 'Vue Router', desc: '路由管理' },
 ]
 
-const catStats = [
-  { icon: '📝', name: '字符工具', count: tools.filter(t=>t.category==='text').length },
-  { icon: '🌐', name: '网络工具', count: tools.filter(t=>t.category==='network').length },
-  { icon: '📅', name: '日期工具', count: tools.filter(t=>t.category==='date').length },
-  { icon: '🖼️', name: '图形工具', count: tools.filter(t=>t.category==='image').length },
-]
+// 统计各分类工具数量
+const catStats = computed(() => {
+  const counts = {}
+  tools.forEach(t => { counts[t.category] = (counts[t.category] || 0) + 1 })
+  return categories.filter(c => c.id !== 'all').map(cat => ({
+    icon: cat.icon,
+    name: cat.name,
+    count: counts[cat.id] || 0,
+  }))
+})
 </script>

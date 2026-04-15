@@ -2,8 +2,8 @@
   <header class="sticky top-0 z-50 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-color)]">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
       <!-- Logo -->
-      <router-link to="/" class="flex items-center gap-2.5 no-underline shrink-0">
-        <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-md">
+      <router-link to="/" class="flex items-center gap-2.5 no-underline shrink-0" aria-label="在线工具箱 - 首页">
+        <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-md" role="img" aria-hidden="true">
           T
         </div>
         <span class="font-bold text-lg text-[var(--text-primary)]">在线工具箱</span>
@@ -62,19 +62,25 @@
       <div class="flex items-center gap-1.5">
         <!-- 搜索 -->
         <div class="relative hidden sm:block">
+          <label for="tool-search" class="sr-only">搜索工具</label>
           <input
+            id="tool-search"
             v-model="search"
             @focus="showSearch = true"
             @blur="onSearchBlur"
             type="text"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="search-results"
+            aria-label="搜索工具"
             placeholder="搜索工具..."
             class="w-36 lg:w-48 pl-8 pr-3 py-1.5 text-sm bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-lg outline-none focus:border-primary-500 transition-all duration-200"
           />
-          <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
           <!-- 搜索结果 -->
-          <div v-if="showSearch && searchResults.length" class="absolute top-full mt-1.5 right-0 w-72 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl shadow-2xl overflow-hidden z-50">
+          <div v-if="showSearch && searchResults.length" id="search-results" role="listbox" class="absolute top-full mt-1.5 right-0 w-72 bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl shadow-2xl overflow-hidden z-50">
             <div class="px-3 py-1.5 text-xs text-[var(--text-secondary)] border-b border-[var(--border-color)]">
               找到 {{ searchResults.length }} 个结果
             </div>
@@ -99,18 +105,18 @@
         </div>
 
         <!-- 暗色模式 -->
-        <button @click="$emit('toggleDark')" class="btn-icon" :title="isDark ? '切换亮色模式' : '切换暗色模式'">
-          <svg v-if="!isDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button @click="$emit('toggleDark')" class="btn-icon" :aria-label="isDark ? '切换亮色模式' : '切换暗色模式'" :title="isDark ? '切换亮色模式' : '切换暗色模式'">
+          <svg v-if="!isDark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
           </svg>
-          <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
 
         <!-- 移动端菜单 -->
-        <button @click="mobileOpen = !mobileOpen" class="btn-icon lg:hidden">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button @click="mobileOpen = !mobileOpen" class="btn-icon lg:hidden" :aria-expanded="mobileOpen" aria-controls="mobile-menu" aria-label="打开菜单">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path v-if="!mobileOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -120,7 +126,7 @@
 
     <!-- 移动端全屏菜单 -->
     <transition name="slide">
-      <div v-if="mobileOpen" class="lg:hidden border-t border-[var(--border-color)] bg-[var(--bg-primary)] overflow-y-auto max-h-[80vh]">
+      <div v-if="mobileOpen" id="mobile-menu" class="lg:hidden border-t border-[var(--border-color)] bg-[var(--bg-primary)] overflow-y-auto max-h-[80vh]">
         <!-- 搜索 -->
         <div class="px-4 py-3 border-b border-[var(--border-color)]">
           <input
