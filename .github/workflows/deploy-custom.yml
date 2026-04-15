@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (Custom Domain)
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-custom"
   cancel-in-progress: false
 
 jobs:
@@ -33,8 +33,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # GitHub Pages 子路径部署
-          VITE_BASE_URL: '/toolbox/'
+          # 自定义域名根路径部署
+          VITE_BASE_URL: '/'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
