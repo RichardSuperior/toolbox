@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+  }
+  .dark {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+  }
+  * {
+    @apply transition-colors duration-200;
+  }
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans;
+    min-height: 100vh;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-600 rounded-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 
+           text-white text-sm font-medium rounded-lg transition-all duration-200 
+           shadow-sm hover:shadow-md active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 
+           dark:bg-slate-700 dark:hover:bg-slate-600
+           text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg 
+           transition-all duration-200 active:scale-95;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 hover:bg-slate-100 
+           dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 
+           text-sm font-medium rounded-lg transition-all duration-200;
+  }
+  .card {
+    @apply bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl shadow-sm 
+           hover:shadow-md transition-all duration-200;
+  }
+  .input-base {
+    @apply w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] 
+           rounded-lg text-[var(--text-primary)] text-sm outline-none 
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+           transition-all duration-200 resize-none;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .section-title {
+    @apply text-2xl font-bold text-[var(--text-primary)];
+  }
+  .section-sub {
+    @apply text-sm text-[var(--text-secondary)] mt-1;
+  }
+}
