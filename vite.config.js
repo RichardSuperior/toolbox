@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/toolbox/',
   plugins: [vue()],
   // 生产优化
   build: {
