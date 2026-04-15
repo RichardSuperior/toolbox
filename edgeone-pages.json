@@ -1,0 +1,47 @@
+{
+  "$schema": "https://pages.edgeone.ai/schemas/edgeone-pages.json",
+  "version": 1,
+  "build": {
+    "command": "npm run build",
+    "outputDirectory": "dist",
+    "installCommand": "npm install"
+  },
+  "routes": [
+    {
+      "path": "/api/*",
+      "target": "functions"
+    },
+    {
+      "path": "/*",
+      "target": "static"
+    }
+  ],
+  "headers": [
+    {
+      "path": "/*",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block"
+      }
+    },
+    {
+      "path": "/*.js",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "path": "/*.css",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "path": "/*.{png,jpg,jpeg,gif,svg,ico,webp}",
+      "headers": {
+        "Cache-Control": "public, max-age=86400"
+      }
+    }
+  ]
+}
