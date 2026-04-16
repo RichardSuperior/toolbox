@@ -1,5 +1,12 @@
 <template>
-  <header class="sticky top-0 z-50 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-color)]">
+  <header class="sticky top-0 z-50">
+    <!-- AI导航站推广横幅 -->
+    <a href="https://www.aicodehome.com" target="_blank" rel="noopener noreferrer" 
+       class="block bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center py-2 px-4 text-sm hover:from-purple-700 hover:to-blue-700 transition-all">
+      🚀 发现更多AI资源 → <span class="font-semibold">AI导航站</span> | 收录最全的AI工具、模型、教程
+    </a>
+    
+    <div class="bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-color)]">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
       <!-- Logo -->
       <router-link to="/" class="flex items-center gap-2.5 no-underline shrink-0" aria-label="在线工具箱 - 首页">
@@ -185,6 +192,7 @@
         </div>
       </div>
     </transition>
+    </div>
   </header>
 </template>
 

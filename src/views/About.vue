@@ -199,6 +199,7 @@ const contacts = [
 
 const friendlyLinks = [
   { name: 'AI大模型技术博客', url: 'https://aijiuming.com', icon: '🔗' },
+  { name: 'AI导航站', url: 'https://www.aicodehome.com', icon: '🚀' },
 ]
 
 // 统计各分类工具数量

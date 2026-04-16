@@ -17,6 +17,8 @@
         <div class="flex items-center gap-4 text-xs">
           <span class="text-[var(--text-secondary)]">友链:</span>
           <a href="https://aijiuming.com" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:underline">AI技术博客</a>
+          <span>|</span>
+          <a href="https://www.aicodehome.com" target="_blank" rel="noopener noreferrer" class="text-primary-500 hover:underline">AI导航站</a>
         </div>
         <div class="text-xs text-[var(--text-secondary)]">
           始于 2026 · By <a href="https://aijiuming.com" target="_blank" class="text-primary-500 hover:underline">SuperiorHui</a>
